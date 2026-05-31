@@ -1,0 +1,274 @@
+<template>
+	<section class="services">
+		<div class="services__container">
+			<div class="services__header">
+				<h2 class="services__title">Направления деятельности</h2>
+				<RouterLink to="/contact-form" class="services__order-btn">
+					Сделать заказ
+				</RouterLink>
+			</div>
+			<div ref="gridEl" class="services__grid" :class="{ 'services__grid--revealed': revealed }">
+				<article class="services__card">
+					<h3 class="services__card-title">Искусственный интеллект</h3>
+					<p class="services__card-intro">
+						Мы создаем и внедряем интеллектуальные программные модули для повышения
+						уровня безопасности объектов и автоматизации анализа видеопотока:
+					</p>
+					<ul class="services__list">
+						<li>
+							Разрабатываем программные модули ИИ для систем видеонаблюдения: детектор
+							огня, распознавание лиц, детектор саботажа видеокамеры, распознавание
+							автомобильных номеров, классификатор целей по изображению.
+						</li>
+						<li>
+							Интегрируем ИИ-модули в существующие системы безопасности предприятий и
+							инфраструктурных объектов.
+						</li>
+						<li>
+							Проводим прикладные научно-исследовательские работы в области
+							компьютерного зрения и машинного обучения.
+						</li>
+						<li>
+							Постоянно изучаем и внедряем передовые open-source решения в сфере
+							AI/ML.
+						</li>
+						<li>
+							Анализируем запросы клиентов и предлагаем оптимальные алгоритмы на базе
+							ИИ под специфические задачи.
+						</li>
+					</ul>
+					<p class="services__note">
+						Для расчета стоимости внедрения ИИ-модуля на вашем объекте, оставьте заявку
+						через форму на сайте. Коммерческое предложение предоставляется
+						индивидуально.
+					</p>
+				</article>
+
+				<article class="services__card">
+					<h3 class="services__card-title">ПО для распределенных систем безопасности</h3>
+					<p class="services__card-intro">
+						Мы создаем и внедряем программы, предназначенные для функционирования во
+						внешних системах, входящих в состав комплексов, предназначенных для
+						построения глобальных распределенных систем безопасности любого масштаба:
+					</p>
+					<ul class="services__list">
+						<li>
+							Модуль «Формирование композитного видеоканала» — выполняет функцию
+							автоматического формирования композитного видеоканала с использованием
+							видеопотоков, полученных из специального программного обеспечения.
+						</li>
+						<li>
+							Модуль «Транскодирование видеопотока» — выполняет функцию
+							автоматического преобразования видеопотока с использованием параметров,
+							заданных в СПО.
+						</li>
+						<li>
+							Модуль «Передача видеопотока по протоколу RTSP» — выполняет функции
+							передачи запроса видеоданных от клиента к специальному программному
+							обеспечению и передачи видеоданных по протоколу RTSP/RTP от специального
+							программного обеспечения к клиенту.
+						</li>
+					</ul>
+					<p class="services__tech">
+						<span>Используемые технологии:</span> C++, SQLite, PostgreSQL.
+					</p>
+					<p class="services__note">
+						Для расчета стоимости внедрения ПО, оставьте заявку через форму на сайте.
+						Коммерческое предложение предоставляется индивидуально.
+					</p>
+				</article>
+
+				<article class="services__card">
+					<h3 class="services__card-title">Заказная разработка ПО</h3>
+					<p class="services__card-intro">
+						Мы разрабатываем кастомные программные решения под задачи заказчиков — от
+						MVP до полноценных корпоративных систем:
+					</p>
+					<ul class="services__list">
+						<li>Анализируем бизнес-задачи клиента и формируем техническое задание.</li>
+						<li>Собираем команду разработчиков и проектируем архитектуру продукта.</li>
+						<li>
+							Используем современные технологии: Python, JavaScript, C++, Vue, React,
+							Node.js, Express.js.
+						</li>
+						<li>
+							Реализуем проект «под ключ» с учетом сроков, бюджета и потребностей
+							заказчика.
+						</li>
+						<li>
+							Примеры решений: корпоративные веб-приложения, модули аналитики,
+							автоматизация документооборота, внутренние CRM- и ERP-системы.
+						</li>
+					</ul>
+					<p class="services__note">
+						Для расчета стоимости разработки ПО, оставьте заявку через форму на сайте.
+						Коммерческое предложение предоставляется индивидуально.
+					</p>
+				</article>
+				<article class="services__card">
+					<h3 class="services__card-title">Аутстаффинг разработчиков</h3>
+					<p class="services__card-intro">
+						Нужны специалисты на проект? Мы предоставим разработчиков с релевантным
+						опытом для усиления вашей команды:
+					</p>
+					<ul class="services__list">
+						<li>Подключение разработчиков в течение 1 рабочего дня.</li>
+						<li>
+							Поддержка технологий: Python, JavaScript, C++, Vue, React, Node.js,
+							Express.js.
+						</li>
+						<li>
+							Гибкие условия: от краткосрочного подключения до долгосрочного
+							сотрудничества.
+						</li>
+						<li>Стоимость: от 3000 рублей в час при объеме от 160 часов в месяц.</li>
+					</ul>
+					<p class="services__note">
+						Для расчета стоимости аутстаффинга, оставьте заявку через форму на сайте.
+						Коммерческое предложение предоставляется индивидуально.
+					</p>
+				</article>
+			</div>
+		</div>
+	</section>
+</template>
+
+<script setup lang="ts">
+import { RouterLink } from 'vue-router';
+import { useScrollReveal } from '@/composables/useScrollReveal';
+
+const { el: gridEl, revealed } = useScrollReveal(0.08);
+</script>
+
+<style scoped lang="scss">
+@use '../../assets/styles/variables.scss' as *;
+@use '../../assets/styles/mixins.scss' as m;
+
+.services {
+	padding: 6rem 1rem;
+	color: $main-text-color;
+
+	&__container {
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	&__header {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		gap: 1.5rem;
+		margin-bottom: 3rem;
+	}
+
+	&__order-btn {
+		@include m.ui-cta;
+	}
+
+	&__title {
+		font-size: 2.2rem;
+		font-weight: 700;
+		margin-bottom: 0;
+		text-align: center;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+
+		@media (min-width: 960px) {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		> .services__card {
+			opacity: 0;
+			transform: translateY(24px);
+			transition: opacity 0.6s ease, transform 0.6s ease;
+		}
+
+		&--revealed > .services__card:nth-child(1) { opacity: 1; transform: none; transition-delay: 0.05s; }
+		&--revealed > .services__card:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.15s; }
+		&--revealed > .services__card:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.25s; }
+		&--revealed > .services__card:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.35s; }
+	}
+
+	&__card {
+		position: relative;
+		padding: 2rem;
+		border: 1px solid rgba(255, 255, 255, 0.06);
+		box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+		overflow: hidden;
+
+		&::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 1.5rem;
+			bottom: 1.5rem;
+			width: 3px;
+			background: linear-gradient(180deg, $main-red-color, transparent);
+			opacity: 0.9;
+		}
+	}
+
+	&__card-title {
+		font-size: 1.4rem;
+		font-weight: 600;
+		margin-bottom: 1rem;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	&__card-intro {
+		font-size: 0.98rem;
+		color: rgba($main-text-color, 0.9);
+		margin-bottom: 1rem;
+		line-height: 1.7;
+	}
+
+	&__list {
+		list-style: none;
+		margin: 0;
+		padding-left: 0;
+		font-size: 0.95rem;
+		line-height: 1.7;
+
+		li {
+			position: relative;
+			padding-left: 1.2rem;
+			margin-bottom: 0.6rem;
+			color: rgba($main-text-color, 0.9);
+
+			&::before {
+				content: '•';
+				position: absolute;
+				left: 0;
+				top: 0;
+				color: $main-red-color;
+			}
+		}
+	}
+
+	&__tech {
+		margin-top: 1rem;
+		font-size: 0.9rem;
+		color: rgba($main-text-color, 0.8);
+
+		span {
+			font-weight: 600;
+			color: $main-text-color;
+		}
+	}
+
+	&__note {
+		margin-top: 1.5rem;
+		font-size: 0.9rem;
+		color: rgba($main-text-color, 0.8);
+		line-height: 1.6;
+	}
+}
+</style>

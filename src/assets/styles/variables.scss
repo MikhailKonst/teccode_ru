@@ -1,0 +1,10 @@
+$main-text-color: #fff;
+$main-red-color: #ff3c3c;
+// Очень тёмный фон с лёгким сине-фиолетовым переливанием по диагонали.
+$main-bg-color: linear-gradient(
+	125deg,
+	#05060d 0%,
+	#0a0c18 45%,
+	#0c0a16 80%,
+	#070710 100%
+);

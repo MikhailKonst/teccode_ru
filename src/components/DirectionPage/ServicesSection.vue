@@ -3,9 +3,6 @@
 		<div class="services__container">
 			<div class="services__header">
 				<h2 class="services__title">Направления деятельности</h2>
-				<RouterLink to="/contact-form" class="services__order-btn">
-					Сделать заказ
-				</RouterLink>
 			</div>
 			<div ref="gridEl" class="services__grid" :class="{ 'services__grid--revealed': revealed }">
 				<article class="services__card">
@@ -129,6 +126,12 @@
 					</p>
 				</article>
 			</div>
+
+			<div class="services__footer">
+				<RouterLink to="/contact-form" class="services__order-btn">
+					Сделать заказ
+				</RouterLink>
+			</div>
 		</div>
 	</section>
 </template>
@@ -160,6 +163,12 @@ const { el: gridEl, revealed } = useScrollReveal(0.08);
 		text-align: center;
 		gap: 1.5rem;
 		margin-bottom: 3rem;
+	}
+
+	&__footer {
+		display: flex;
+		justify-content: center;
+		margin-top: 3rem;
 	}
 
 	&__order-btn {

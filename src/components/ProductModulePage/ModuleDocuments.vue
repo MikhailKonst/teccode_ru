@@ -1,5 +1,6 @@
 <template>
 	<section class="docs" v-if="docs.length">
+		<span class="docs__bar" aria-hidden="true"></span>
 		<div class="docs__container">
 			<RouterLink
 				v-for="(doc, i) in docs"
@@ -8,7 +9,16 @@
 				:to="{ name: ROUTES.moduleDoc.name, params: { slug: moduleSlug, docId: doc.id } }"
 				:style="{ animationDelay: `${0.05 * i}s` }"
 			>
-				<span class="docs__icon" aria-hidden="true">TXT</span>
+				<span class="docs__file" aria-hidden="true">
+					<span class="docs__file-tab">TXT</span>
+					<span class="docs__file-code">
+						<i class="docs__code-line docs__code-line--kw"></i>
+						<i class="docs__code-line docs__code-line--lg"></i>
+						<i class="docs__code-line docs__code-line--md"></i>
+						<i class="docs__code-line docs__code-line--lg"></i>
+						<i class="docs__code-line docs__code-line--sm"></i>
+					</span>
+				</span>
 				<span class="docs__title">{{ doc.title }}</span>
 			</RouterLink>
 		</div>
@@ -32,11 +42,26 @@ defineProps<{
 .docs {
 	margin-top: 3.5rem;
 
+	// Фирменная красная полоса над документами
+	&__bar {
+		display: block;
+		width: 100%;
+		max-width: 960px;
+		height: 3px;
+		margin: 0 auto 1.5rem;
+		border-radius: 3px;
+		background: linear-gradient(
+			to right,
+			rgba($main-red-color, 0) 0%,
+			rgba($main-red-color, 0.85) 50%,
+			rgba($main-red-color, 0) 100%
+		);
+		box-shadow: 0 0 12px rgba($main-red-color, 0.35);
+	}
+
 	&__container {
 		max-width: 960px;
 		margin: 0 auto;
-		padding-top: 1.5rem;
-		border-top: 1px solid rgba(255, 255, 255, 0.06);
 		display: grid;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: 2.2rem 4rem;
@@ -49,8 +74,12 @@ defineProps<{
 
 	&__item {
 		display: flex;
+		flex-direction: column;
 		align-items: center;
-		gap: 1.4rem;
+		// Кликабельна только зона самого документа, а не вся ячейка грида.
+		justify-self: center;
+		width: fit-content;
+		gap: 1rem;
 		color: rgba($main-text-color, 0.9);
 		text-decoration: none;
 		cursor: pointer;
@@ -59,77 +88,102 @@ defineProps<{
 		transition: transform 0.15s ease-out;
 
 		&:hover {
-			transform: translateY(-3px);
+			transform: translateY(-4px);
 
 			.docs__title {
 				color: $main-red-color;
 			}
 
-			.docs__icon {
+			.docs__file {
 				border-color: $main-red-color;
-				box-shadow: 0 14px 32px rgba(0, 0, 0, 0.95);
+				box-shadow: 0 16px 36px rgba(0, 0, 0, 0.95);
 				background: radial-gradient(
-					circle at 30% 20%,
-					rgba($main-red-color, 0.22),
-					rgba(0, 0, 0, 0.7)
+					circle at 30% 15%,
+					rgba($main-red-color, 0.18),
+					rgba(0, 0, 0, 0.75)
 				);
 			}
 		}
 	}
 
-	&__icon {
-		width: 60px;
-		height: 80px;
-		flex: 0 0 60px;
+	// Сам «файл программиста»: лист с загнутым углом и строками кода внутри.
+	&__file {
+		position: relative;
+		width: 84px;
+		height: 104px;
 		border-radius: 8px;
 		background: rgba(0, 0, 0, 0.4);
 		border: 2px solid rgba(255, 255, 255, 0.9);
-		display: flex;
-		align-items: flex-end;
-		justify-content: center;
-		font-size: 0.72rem;
-		font-weight: 600;
-		letter-spacing: 0.16em;
-		text-transform: uppercase;
-		color: $main-red-color;
-		position: relative;
-		overflow: hidden;
-		padding-bottom: 0.45rem;
 		box-shadow: 0 10px 28px rgba(0, 0, 0, 0.8);
+		overflow: hidden;
 		transition:
 			border-color 0.15s ease-out,
 			box-shadow 0.15s ease-out,
 			background 0.15s ease-out;
 
+		// Загнутый угол
 		&::before {
 			content: '';
 			position: absolute;
 			top: 0;
 			right: 0;
-			width: 20px;
-			height: 20px;
+			width: 22px;
+			height: 22px;
 			border-top: 2px solid rgba(255, 255, 255, 0.9);
 			border-left: 2px solid rgba(255, 255, 255, 0.9);
-			transform: translate(9px, -9px) rotate(45deg);
+			transform: translate(10px, -10px) rotate(45deg);
 			background: rgba(0, 0, 0, 0.98);
-		}
-
-		&::after {
-			content: '';
-			position: absolute;
-			top: 22px;
-			left: 11px;
-			right: 11px;
-			height: 2px;
-			background: rgba(255, 255, 255, 0.35);
 		}
 	}
 
+	// Ярлык типа файла в верхнем левом углу
+	&__file-tab {
+		position: absolute;
+		top: 8px;
+		left: 8px;
+		padding: 1px 5px;
+		font-size: 0.55rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: $main-red-color;
+		border: 1px solid rgba($main-red-color, 0.6);
+		border-radius: 3px;
+		background: rgba($main-red-color, 0.08);
+	}
+
+	// Имитация строк кода внутри листа
+	&__file-code {
+		position: absolute;
+		left: 11px;
+		right: 11px;
+		bottom: 12px;
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+	}
+
+	&__code-line {
+		display: block;
+		height: 4px;
+		border-radius: 2px;
+		background: rgba(255, 255, 255, 0.28);
+
+		&--kw {
+			width: 45%;
+			background: rgba($main-red-color, 0.75);
+		}
+
+		&--lg { width: 90%; }
+		&--md { width: 70%; }
+		&--sm { width: 55%; }
+	}
+
 	&__title {
-		flex: 1;
-		font-size: 1.02rem;
-		line-height: 1.7;
-		text-align: left;
+		max-width: 14ch;
+		font-size: 0.95rem;
+		line-height: 1.5;
+		text-align: center;
 		color: rgba($main-text-color, 0.92);
 		transition: color 0.15s ease-out;
 	}
